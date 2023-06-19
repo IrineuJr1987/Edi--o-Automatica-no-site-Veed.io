@@ -6,18 +6,22 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 import pyperclip
 import random
 import os
 import shutil
 import datetime
+from webdriver_manager.chrome import ChromeDriverManager
 
 #prepara o codigo para abrir com o perfil default do chrome
 options = Options()
 options.add_experimental_option("detach", True)
 options.add_argument("--profile-directory=Default")
 options.add_argument("--user-data-dir=C:\\Users\\Bill\\AppData\\Local\\Google\\Chrome\\User Data")
-driver = webdriver.Chrome(service=Service("C:\\Users\\Bill\\AppData\\Local\\Programs\\Python\\Python310\\chromedriver.exe"), options=options)
+options.add_argument("--headless")
+
+driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 actions = ActionChains(driver)
 
 for i in range(100):
