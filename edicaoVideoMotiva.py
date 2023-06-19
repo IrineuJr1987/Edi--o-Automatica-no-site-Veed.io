@@ -18,8 +18,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 options = Options()
 options.add_experimental_option("detach", True)
 options.add_argument("--profile-directory=Default")
+options.add_argument("--no-sandbox")
 options.add_argument("--user-data-dir=C:\\Users\\Bill\\AppData\\Local\\Google\\Chrome\\User Data")
-options.add_argument("--headless")
+#options.add_argument("--headless")
 
 driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
 actions = ActionChains(driver)
